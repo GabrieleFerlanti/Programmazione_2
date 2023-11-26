@@ -111,6 +111,55 @@ template <typename T>
         }
     }
 
+// Quick Sort
+
+/*
+    s - initial index
+    e - final index
+*/
+
+template <typename T>
+    int Partion(T *A, int s, int e, int c){
+        T pivot = A[s];
+        int i = s - 1, j = e + 1;
+        if(c){
+            do{
+                do{
+                    i++;
+                }while(A[i] < pivot);
+                do{
+                    j--;
+                }while(A[j] > pivot);
+                if(i < j){
+                    _swap(A[i], A[j]);
+                }
+            }while(i < j);
+        }else{
+            do{
+                do{
+                    i++;
+                }while(A[i] > pivot);
+                do{
+                    j--;
+                }while(A[j] < pivot);
+                if(i < j){
+                    _swap(A[i], A[j]);
+                }
+            }while(i < j);
+            }
+        return j;
+    }
+
+template <typename T> 
+    void QuickSort(T *A, int s, int e, int c){
+        if(s < e){
+            int m = Partion(A, s, e, c);
+            QuickSort(A, s, m, c);
+            QuickSort(A, m+1, e, c);
+        }
+    }
+
+
 // test
 
 int main(){
@@ -149,15 +198,28 @@ int main(){
 
     /*
     SelectionSort(A, SIZE, 1);
-        cout << "Selection Sort - increasing" << endl;
-        for(int i = 0; i < SIZE; i++){
-            cout << A[i] << endl;
-        }
-        SelectionSort(A, SIZE, 0);
-        cout << "Selection Sort - increasing" << endl;
-        for(int i = 0; i < SIZE; i++){
-            cout << A[i] << endl;
-        }
+    cout << "Selection Sort - increasing" << endl;
+    for(int i = 0; i < SIZE; i++){
+        cout << A[i] << endl;
+    }
+    SelectionSort(A, SIZE, 0);
+    cout << "Selection Sort - decreasing" << endl;
+    for(int i = 0; i < SIZE; i++){
+        cout << A[i] << endl;
+    }
+    */
+
+    /*
+    QuickSort(A, 0, SIZE, 1);
+    cout << "Quick Sort - increasing" << endl;
+    for(int i = 0; i < SIZE; i++){
+        cout << A[i] << endl;
+    }
+    QuickSort(A, 0, SIZE, 0);
+    cout << "Quick Sort - decreasing" << endl;
+    for(int i = 0; i < SIZE; i++){
+        cout << A[i] << endl;
+    }
     */
     
     
