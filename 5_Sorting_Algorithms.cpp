@@ -79,17 +79,42 @@ template <typename T>
 
 template <typename T> 
     void SelectionSort(T *A, int d, int c){
+        int min;
         if(c){
-
+            for(int i = 0; i < d; i++){
+                min = i;
+                int j = i+1;
+                while(j < d){
+                    if(A[min] > A[j]){
+                        min = j;
+                    }
+                    j++;
+                }
+                if(min != i){
+                    _swap(A[i], A[min]);
+                }
+            }
         }else{
-
+            for(int i = 0; i < d; i++){
+                min = i;
+                int j = i+1;
+                while(j < d){
+                    if(A[min] < A[j]){
+                        min = j;
+                    }
+                    j++;
+                }
+                if(min != i){
+                    _swap(A[i], A[min]);
+                }
+            }
         }
     }
 
 // test
 
 int main(){
-    
+
     int* A = new int[SIZE];
     for(int i = 0; i < SIZE; i++){
         A[i] = rand()%10;
@@ -121,6 +146,20 @@ int main(){
         cout << A[i] << endl;
     }
     */
+
+    /*
+    SelectionSort(A, SIZE, 1);
+        cout << "Selection Sort - increasing" << endl;
+        for(int i = 0; i < SIZE; i++){
+            cout << A[i] << endl;
+        }
+        SelectionSort(A, SIZE, 0);
+        cout << "Selection Sort - increasing" << endl;
+        for(int i = 0; i < SIZE; i++){
+            cout << A[i] << endl;
+        }
+    */
+    
     
     return 0;
 }
