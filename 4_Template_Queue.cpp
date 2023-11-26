@@ -31,6 +31,12 @@ template <typename T> class Queue{
                 throw QueueEmptyException();
             }
         }
+
+        void show(){
+            while(head != tail->next){
+                cout << dequeue() << endl;
+            }
+        }
 };
 
 int main(){
@@ -39,11 +45,8 @@ int main(){
     q.enqueue(5);
     q.enqueue(4);
     q.enqueue(3);
-    cout << q.dequeue() << endl;
-    cout << q.dequeue() << endl;
-    cout << q.dequeue() << endl;
-    cout << q.dequeue() << endl;
-    cout << q.dequeue() << endl;
+    q.show();
+    q.dequeue();
    
     return 0;
 }
