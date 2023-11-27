@@ -159,6 +159,63 @@ template <typename T>
         }
     }
 
+// Merge Sort
+
+template <typename T> 
+    void Merge(T *A, int s, int e, int c){
+        T D[e+1];
+        int m = (s+e)/2;
+        int i = s, j = m+1, k = s;
+        if(c){
+            while(i <= m && j <= e){
+                    if(A[i] < A[j]){
+                        D[k] = A[i];
+                        k++;
+                        i++;
+                    }else{
+                        D[k] = A[j];
+                        k++;
+                        j++;
+                    }
+            }   
+        }else{
+            while(i <= m && j <= e){
+                    if(A[i] > A[j]){
+                        D[k] = A[i];
+                        k++;
+                        i++;
+                    }else{
+                        D[k] = A[j];
+                        k++;
+                        j++;
+                    }
+            }   
+        }
+        while(i <= m){
+            D[k] = A[i];
+            i++;
+            k++;
+        }
+        while(j <= e){
+            D[k] = A[j];
+            j++;
+            k++;
+        }
+        for (int i = s; i < k; i++){
+            A[i] = D[i];
+        }
+    }
+
+template <typename T> 
+    void MergeSort(T *A, int s, int e, int c){
+        if(s < e){
+            int m = (s+e)/2;
+            MergeSort(A, s, m, c);
+            MergeSort(A, m+1, e, c);
+
+            Merge(A, s, e, c);
+        }
+    }
 
 // test
 
@@ -210,18 +267,30 @@ int main(){
     */
 
     /*
-    QuickSort(A, 0, SIZE, 1);
+    QuickSort(A, 0, SIZE0-1, 1);
     cout << "Quick Sort - increasing" << endl;
     for(int i = 0; i < SIZE; i++){
         cout << A[i] << endl;
     }
-    QuickSort(A, 0, SIZE, 0);
+    QuickSort(A, 0, SIZE-1, 0);
     cout << "Quick Sort - decreasing" << endl;
     for(int i = 0; i < SIZE; i++){
         cout << A[i] << endl;
     }
     */
     
+    /*
+    MergeSort(A, 0, SIZE-1, 1);
+    cout << "Merge Sort - increasing" << endl;
+    for(int i = 0; i < SIZE; i++){
+        cout << A[i] << endl;
+    }
+    MergeSort(A, 0, SIZE-1, 0);
+    cout << "Merge Sort - decreasing" << endl;
+    for(int i = 0; i < SIZE; i++){
+        cout << A[i] << endl;
+    }
+    */
     
     return 0;
 }
