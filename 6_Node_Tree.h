@@ -10,4 +10,6 @@ template <typename K, typename D>
             Node(K key, D data) : key(key), data(data), left(nullptr), right(nullptr){}
             K getKey(){return key;}
             D getData(){return data;}
+            void setKey(K k){key = k;}
+            void setData(D d){data = d;}
     };
