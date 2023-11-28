@@ -3,6 +3,9 @@
 
 using namespace std;
 
+/*
+BST
+*/
 
 template <typename K, typename D>
     class Tree{
