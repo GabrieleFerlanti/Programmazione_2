@@ -1,0 +1,10 @@
+12345 Rossi Mario Roma 28.5
+23456 Bianchi Luca Milano 24.8
+34567 Verdi Anna Napoli 30.0
+45678 Ferrari Giuseppe Torino 26.3
+56789 Romano Laura Firenze 29.7
+67890 Moretti Giovanni Palermo 25.2
+78901 Gallo Francesca Bologna 27.8
+89012 Santoro Marco Venezia 28.9
+90123 Mancini Sara Genova 26.5
+12301 Pellegrino Alessia Cagliari 29.1
