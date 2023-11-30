@@ -3,6 +3,15 @@
 
 using namespace std;
 
+class Shape{
+    public:
+        
+        friend ostream& operator<<(ostream &out, Shape *&t){
+            out << "Shape: " << t->getArea() << endl;
+            return out;
+        }
+        virtual double getArea() const = 0;
+};
 template <typename T> 
     class Node{
         private:
@@ -54,6 +63,14 @@ template <typename T>
                 }
             }
 
+            void _transform(BST<Shape*> *& b, Node<T> *& node){
+                if(node != nullptr){
+                    _transform(b, node->left);
+                    b->insert(&node->data);
+                    _transform(b, node->right);
+                }
+            }
+
         public:
             BST() : root(nullptr){}
 
@@ -68,13 +85,11 @@ template <typename T>
             void _delete(double area){
                 __delete(root, area);
             }
+
+            void transform(BST<Shape*> *& b){
+                _transform(b, root);
+            }
     };
-
-
-class Shape{
-        virtual double getArea() const = 0;
-};
-
 class Rectagle : public Shape{
     private:
         double b, h;
@@ -202,9 +217,7 @@ int main(){
     }
 
     r.show();
-    cout << endl;
     c.show();
-    cout << endl;
     t.show();
 
     cout << "Delete shape with area < ";
@@ -215,8 +228,10 @@ int main(){
     c._delete(b);
     t._delete(b);
 
-    r.show();
-    c.show();
-    t.show();
+    BST<Shape*> *f = new BST<Shape*>();
 
+    r.transform(f);
+    c.transform(f);
+    t.transform(f);
+    f->show();
 }
