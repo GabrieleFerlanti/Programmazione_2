@@ -166,19 +166,4 @@ int main(){
     cout << endl;
     t.show();
 
-    cout << "Delete shape with area < of: " ;
-    cin >> b;
-
-    /*r._delete(b);
-    c._delete(b);
-    t._delete(b);
-
-    cout << "Shape area > of " << b << endl;
-
-    r.show();
-    cout << endl;
-    c.show();
-    cout << endl;
-    t.show();*/
-
 }
