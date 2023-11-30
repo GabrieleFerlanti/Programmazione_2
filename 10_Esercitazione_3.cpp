@@ -21,11 +21,10 @@ template <typename T>
             Node<T> * root;
 
             void _insert(T data, Node<T> *& node){
-                Node<T> * newNode = new Node(data);
                 if(node == nullptr){
-                    node = newNode;
+                    node = new Node(data);
                 }else{
-                    if(data > newNode->data){
+                    if(data > node->data){
                         _insert(data, node->right);
                     }else{
                         _insert(data, node->left);
@@ -41,6 +40,20 @@ template <typename T>
                 }
             }
 
+            void __delete(Node<T> *& node, double value){
+                if(node != nullptr){
+                    if(node->data < value){
+                        node = node->right;
+                        __delete(node, value);
+                    }else if(node->data >= value){
+                        __delete(node->left, value);
+                    }else if(node->right->data < value){
+                        node = node->right;
+                        __delete(node, value);
+                    }
+                }
+            }
+
         public:
             BST() : root(nullptr){}
 
@@ -50,6 +63,10 @@ template <typename T>
 
             void show(){
                 _show(root);
+            }
+
+            void _delete(double area){
+                __delete(root, area);
             }
     };
 
@@ -72,6 +89,14 @@ class Rectagle : public Shape{
             return this->getArea() > r.getArea();
         }
 
+        bool operator>=(const double area)const {
+            return this->getArea() >= area;
+        }
+
+        bool operator<(const double area)const {
+            return this->getArea() < area;
+        }
+
         friend ostream& operator<<(ostream &out, Rectagle &r){
             out << "Rectagle area: " << r.getArea() << endl;
             return out;
@@ -90,6 +115,14 @@ class Circle : public Shape{
 
         bool operator>(const Circle &c) const{
             return this->getArea() > c.getArea();
+        }
+
+        bool operator>=(const double area) const{
+            return this->getArea() >= area;
+        }
+
+        bool operator<(const double area) const{
+            return this->getArea() < area;
         }
 
         friend ostream& operator<<(ostream &out, Circle &c){
@@ -113,6 +146,14 @@ class Triangle : public Shape{
             return this->getArea() > t.getArea();
         }
 
+        bool operator>=(const double area)const{
+            return this->getArea() >= area;
+        }
+
+        bool operator<(const double area)const{
+            return this->getArea() < area;
+        }
+
         friend ostream& operator<<(ostream &out, Triangle &t){
             out << "Triangle area: " << t.getArea() << endl;
             return out;
@@ -120,6 +161,7 @@ class Triangle : public Shape{
 };
 
 int main(){
+
     int n;
     cout << "Number of shape";
     cin >> n;
@@ -163,6 +205,18 @@ int main(){
     cout << endl;
     c.show();
     cout << endl;
+    t.show();
+
+    cout << "Delete shape with area < ";
+    cin >> b;
+    cout << endl;
+
+    r._delete(b);
+    c._delete(b);
+    t._delete(b);
+
+    r.show();
+    c.show();
     t.show();
 
 }
