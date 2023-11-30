@@ -120,7 +120,6 @@ class Triangle : public Shape{
 };
 
 int main(){
-    cout << "ciao" << endl;
     int n;
     cout << "Number of shape";
     cin >> n;
