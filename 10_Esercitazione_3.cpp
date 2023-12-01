@@ -52,12 +52,16 @@ template <typename T>
             void __delete(Node<T> *& node, double value){
                 if(node != nullptr){
                     if(node->data < value){
+                        Node<T> * toDelete = node;
                         node = node->right;
+                        delete toDelete;
                         __delete(node, value);
                     }else if(node->data >= value){
                         __delete(node->left, value);
                     }else if(node->right->data < value){
+                        Node<T> * toDelete = node;
                         node = node->right;
+                        delete toDelete;
                         __delete(node, value);
                     }
                 }
@@ -178,7 +182,7 @@ class Triangle : public Shape{
 int main(){
 
     int n;
-    cout << "Number of shape";
+    cout << "Number of shape? ";
     cin >> n;
     cout << endl;
     cout << "1 - add a Rectangle" << endl;
@@ -215,6 +219,7 @@ int main(){
             t.insert(triangle);
         }
     }
+    cout << endl;
 
     r.show();
     c.show();
@@ -233,5 +238,6 @@ int main(){
     r.transform(f);
     c.transform(f);
     t.transform(f);
+    cout << endl;
     f->show();
 }
