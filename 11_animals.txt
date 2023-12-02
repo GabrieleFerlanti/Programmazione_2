@@ -1,0 +1,6 @@
+Fido Labrador 3 Dog
+Luna Siamese 2 Cat
+Rex PastoreTedesco 5 Dog
+Leo Persiano 4 Cat
+Milo Beagle 1 Dog
+Nala MaineCoon 3 Cat
