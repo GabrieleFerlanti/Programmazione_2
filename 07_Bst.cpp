@@ -1,5 +1,5 @@
 #include <iostream>
-#include "06_Node_Tree.h"
+#include "06_Node_Bst.h"
 
 using namespace std;
 
@@ -8,7 +8,7 @@ BST
 */
 
 template <typename K, typename D>
-    class Tree{
+    class Bst{
             Node<K, D> * root;
 
             void _insert(Node<K, D> *& node, K key, D data){
@@ -95,7 +95,7 @@ template <typename K, typename D>
             }
 
         public:
-            Tree() : root(nullptr){}
+            Bst() : root(nullptr){}
 
             void insert(K key, D data){
                 _insert(root, key, data);
@@ -116,7 +116,7 @@ template <typename K, typename D>
     };
 
 int main(){
-    Tree<int, int> t;
+    Bst<int, int> t;
     t.insert(3,4);
     t.insert(2,1);
     t.insert(7,2);
