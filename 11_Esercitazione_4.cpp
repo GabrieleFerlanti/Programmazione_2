@@ -41,6 +41,18 @@ template <typename T>
                     }
                 }
             }
+
+            T _find(Node<T> *& node, string name){
+                if(node != nullptr){
+                    _find(node->left, name);
+                    if(node->getData() == name){
+                        return node->getData();
+                    }
+                    _find(node->right, name);
+                }
+                return nullptr;
+            }
+
         public:
             Bst() : root(nullptr){}
 
@@ -50,6 +62,15 @@ template <typename T>
 
             void insert(T data){
                 _insert(root, data);
+            }
+
+            void find(string name){
+                T a= _find(root, name);
+                if(a != nullptr){
+                    cout << "Found " << a << endl;
+                }else{
+                    cout << "Not found" << endl;
+                }
             }
     };
 
@@ -69,8 +90,9 @@ class Animals{
         bool operator>(Animals * a){
             return this->name > a->name;
         }
-        bool operator=(string name){
-            return this->name == name;
+
+        friend bool operator==(Animals * a, string name){
+            return a->name == name;
         }
 };
 
@@ -126,5 +148,7 @@ int main(){
 
     animals.show();
 
+    animals.find("Fido");
+    animals.find("Gino");
     return 0;
 }
