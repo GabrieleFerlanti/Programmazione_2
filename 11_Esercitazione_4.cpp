@@ -41,16 +41,6 @@ template <typename T>
                     }
                 }
             }
-
-            T* _find(Node<T> *& node, string name){
-                if(node != nullptr){
-                    _show(node->left);
-                    if(node->getData() == name){
-                        return &node->getData();
-                    }
-                    _show(node->right);
-                }
-            }
         public:
             Bst() : root(nullptr){}
 
@@ -60,10 +50,6 @@ template <typename T>
 
             void insert(T data){
                 _insert(root, data);
-            }
-
-            T* find(string name){
-                return _find(name);
             }
     };
 
